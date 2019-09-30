@@ -6,14 +6,6 @@ using UnityEngine.UI;
 public class EnemyEncounter : MonoBehaviour
 {
 
-    [CreateAssetMenu]
-    class ComponentEnemy : ScriptableObject {
-        [SerializeField] GameObject enemyPrefab;
-        public GameObject EnemyPrefab { get => enemyPrefab; }
-        [SerializeField] private int numberToSpawn;
-        public int NumberToSpawn { get => numberToSpawn; }
-  }
-
     [SerializeField] ComponentEnemy[] spawnList;
 
     // Start is called before the first frame update
@@ -28,7 +20,13 @@ public class EnemyEncounter : MonoBehaviour
         {
             for (int i = 0; i < enemy.NumberToSpawn; i++)
             {
-                Instantiate(enemy.EnemyPrefab, gameObject.transform);
+                GameObject newEnemy = Instantiate(enemy.EnemyPrefab, gameObject.transform);
+                
+                newEnemy.transform.position = new Vector3(
+                    newEnemy.transform.position.x,
+                    newEnemy.transform.position.y,
+                    newEnemy.transform.position.z - i
+                );
             }
         }
     }

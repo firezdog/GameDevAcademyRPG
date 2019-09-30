@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f47b45449dcce405086fe6af15764770, type: 3}
   m_Name: SnakeEnemyComponent
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEncounter/ComponentEnemy
   enemyPrefab: {fileID: 8338781720917947003, guid: 65b7d2ac9af86476fa3a90209852b1ff,
