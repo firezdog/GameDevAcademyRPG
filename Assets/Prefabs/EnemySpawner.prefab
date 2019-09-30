@@ -68,9 +68,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1407179105270065121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65ecf0868aa66424f92be513aaae2f6b, type: 3}
+  m_Script: {fileID: 11500000, guid: cce17c74450784c08bb14f2b81325444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyEncounter: {fileID: 0}
 --- !u!212 &212388585430001480
 SpriteRenderer:
   m_ObjectHideFlags: 0

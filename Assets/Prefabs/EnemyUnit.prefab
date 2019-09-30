@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114795628420842350}
   - component: {fileID: 114893690779080906}
   - component: {fileID: 1948663137440739875}
+  - component: {fileID: 7091539755017145782}
   m_Layer: 0
   m_Name: EnemyUnit
   m_TagString: Untagged
@@ -114,11 +115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5410771169566457842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d0e6f01b71a4fa8b62192cb72f6cfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 61664e0634e574d8e8ea1689b2858db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetEnemyButtonPrefab: {fileID: 7587009454993752268, guid: 55d472420fabc4e12966f4d719959392,
-    type: 3}
 --- !u!114 &1948663137440739875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +138,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &7091539755017145782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410771169566457842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebc109efb874484eaecadc0f05907ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetEnemyButtonPrefab: {fileID: 7587009454993752268, guid: 55d472420fabc4e12966f4d719959392,
+    type: 3}

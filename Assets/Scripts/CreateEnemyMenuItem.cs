@@ -13,6 +13,8 @@ public class CreateEnemyMenuItem : MonoBehaviour
         enemyUnitsMenu = GameObject.Find("EnemyUnitsMenu");
         GameObject myEnemyButton = Instantiate(targetEnemyButtonPrefab, enemyUnitsMenu.transform);
         myEnemyButton.GetComponent<Image>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        myEnemyButton.GetComponent<Button>().onClick.AddListener(gameObject.GetComponent<KillEnemy>().OnDestroy);
+        gameObject.GetComponent<KillEnemy>().MenuItem = myEnemyButton;
     }
 
 }
