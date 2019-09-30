@@ -22,6 +22,7 @@ public class KillEnemy : MonoBehaviour
 
     public void OnDestroy() {
         Destroy(menuItem);
+        Destroy(gameObject);
     }
 
 }
