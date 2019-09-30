@@ -21,11 +21,11 @@ public class EnemyEncounter : MonoBehaviour
             for (int i = 0; i < enemy.NumberToSpawn; i++)
             {
                 GameObject newEnemy = Instantiate(enemy.EnemyPrefab, gameObject.transform);
-                
+                Vector3 newEnemyPosition = newEnemy.transform.position;
                 newEnemy.transform.position = new Vector3(
-                    newEnemy.transform.position.x,
-                    newEnemy.transform.position.y,
-                    newEnemy.transform.position.z - i
+                    newEnemyPosition.x,
+                    newEnemyPosition.y,
+                    newEnemy.transform.position.z - (i * 0.1f)
                 );
             }
         }
