@@ -21,6 +21,7 @@ public class EnemyEncounter : MonoBehaviour
             for (int i = 0; i < enemy.NumberToSpawn; i++)
             {
                 GameObject newEnemy = Instantiate(enemy.EnemyPrefab, gameObject.transform);
+                newEnemy.name = $"Snake Enemy {i}";
                 Vector3 newEnemyPosition = newEnemy.transform.position;
                 newEnemy.transform.position = new Vector3(
                     newEnemyPosition.x,
