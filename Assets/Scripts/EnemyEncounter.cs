@@ -9,7 +9,7 @@ public class EnemyEncounter : MonoBehaviour
     [SerializeField] ComponentEnemy[] spawnList;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SpawnEnemies();
     }

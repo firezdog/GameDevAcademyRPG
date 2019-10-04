@@ -12,7 +12,6 @@ public class TurnSystem : MonoBehaviour
     void Start()
     {
         GetAllContestants();
-        print(contestants.Count);
     }
 
     // Update is called once per frame
