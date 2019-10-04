@@ -30,6 +30,8 @@ public class TurnSystem : MonoBehaviour
         {
             foreach(GameObject unit in unitGroup)
             {
+                UnitStats unitStats = unit.GetComponent<UnitStats>();
+                unitStats.SetOrder();
                 contestants.Add(unit.GetComponent<UnitStats>());
             }
         }
