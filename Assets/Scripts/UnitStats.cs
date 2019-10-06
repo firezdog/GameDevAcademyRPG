@@ -10,14 +10,14 @@ public class UnitStats : MonoBehaviour, IComparable
     public float attack;
     public float magic;
     public float defense;
-    public float speed;
+    public float speed = 1;
 
     // derived
     public int order;
 
     public int CompareTo(object other)
     {
-        return order - ((UnitStats) other).order;
+        return  order - ((UnitStats) other).order;
     }
 
     // "turn" argument gets larger and larger to maintain order as battle advances
@@ -25,4 +25,9 @@ public class UnitStats : MonoBehaviour, IComparable
     {
         order = turn + (int) Math.Ceiling(100 / speed);
     }
+
+    public override String ToString() {
+        return gameObject.name;
+    }
+
 }
