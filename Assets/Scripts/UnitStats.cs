@@ -5,25 +5,22 @@ using UnityEngine;
 
 public class UnitStats : MonoBehaviour, IComparable
 {
-    [SerializeField] float health;
-    [SerializeField] float mana;
-    [SerializeField] float attack;
-    [SerializeField] float magic;
-    [SerializeField] float defense;
-    [SerializeField] float speed = 1;
+    [SerializeField] int health;
+    [SerializeField] int mana;
+    [SerializeField] int attack;
+    [SerializeField] int magic;
+    [SerializeField] int defense;
+    [SerializeField] int speed;
 
-    // derived
-    int order;
+    public int Speed { get => speed; set => speed = value; }
+
+    void Start() 
+    {
+    }
 
     public int CompareTo(object other)
     {
-        return  order - ((UnitStats) other).order;
-    }
-
-    // "turn" argument gets larger and larger to maintain order as battle advances
-    public void SetOrder(int turn)
-    {
-        order = turn + (int) Math.Ceiling(100 / speed);
+        return  ((UnitStats) other).Speed - Speed;
     }
 
     public override String ToString() {
