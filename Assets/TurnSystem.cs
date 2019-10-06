@@ -37,6 +37,7 @@ public class TurnSystem : MonoBehaviour
             }
         }
         contestants.Sort();
+        print(this);
     }
 
     // get the next contestant to move
@@ -47,7 +48,10 @@ public class TurnSystem : MonoBehaviour
     public override string ToString() {
         StringBuilder sb = new StringBuilder();
         sb.Append("[");
-        foreach (var item in contestants) sb.Append($"{item}, ");
+        for (int i = 0; i < contestants.Count; i++) {
+            if (i == contestants.Count - 1) sb.Append($"{contestants[i]}"); 
+            else sb.Append($"{contestants[i]}, ");
+        }
         sb.Append("]");
         return sb.ToString();
     }

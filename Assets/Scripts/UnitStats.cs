@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class UnitStats : MonoBehaviour, IComparable
 {
-    public float health;
-    public float mana;
-    public float attack;
-    public float magic;
-    public float defense;
-    public float speed = 1;
+    [SerializeField] float health;
+    [SerializeField] float mana;
+    [SerializeField] float attack;
+    [SerializeField] float magic;
+    [SerializeField] float defense;
+    [SerializeField] float speed = 1;
 
     // derived
-    public int order;
+    int order;
 
     public int CompareTo(object other)
     {
