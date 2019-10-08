@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 public class TurnSystem : MonoBehaviour
 {
 
+    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, characterDisplay;
+
     List<UnitStats> turnQueue;
     List<UnitStats> nextQueue;
-    bool waitForInput;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +23,12 @@ public class TurnSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && waitForInput) {
-            waitForInput = false;
-            NextTurn();
-        }
+    }
+
+    void SwitchMenus(bool option) {
+        actionsMenu.SetActive(option);
+        enemyUnitsMenu.SetActive(option);
+        characterDisplay.SetActive(option);
     }
 
     void GetAllContestants()
@@ -47,9 +50,8 @@ public class TurnSystem : MonoBehaviour
     }
 
     // get the next contestant to move
-    void NextTurn()
+    public void NextTurn()
     {
-        print(this);
         if (turnQueue.Count == 0 && nextQueue.Count == 0) { 
             Debug.Log("Error: No units in battle!");
             return;
@@ -59,16 +61,13 @@ public class TurnSystem : MonoBehaviour
             turnQueue.Sort();
             nextQueue = new List<UnitStats>();
         }
+        print(this);
         UnitStats contestant = turnQueue[0];
-        if (contestant.gameObject.tag == "EnemyUnit") {
-            waitForInput = true;
-        }
+        if (contestant.tag == "EnemyUnit") SwitchMenus(false);
+        else if (contestant.tag == "PlayerUnit") SwitchMenus(true);
         turnQueue.Remove(contestant);
         nextQueue.Add(contestant);
-        print($"{contestant} up to bat.");
-        if (!waitForInput) {
-            NextTurn();
-        }
+        contestant.Act(this);
     }
 
     public override string ToString() {

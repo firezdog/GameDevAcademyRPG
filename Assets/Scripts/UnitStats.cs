@@ -27,4 +27,9 @@ public class UnitStats : MonoBehaviour, IComparable
         return gameObject.name;
     }
 
+    internal void Act(TurnSystem currentBattle)
+    {
+        print($"{gameObject.name} up to bat.");
+        if (gameObject.tag == "EnemyUnit") currentBattle.NextTurn();
+    }
 }
