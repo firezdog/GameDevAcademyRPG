@@ -61,7 +61,6 @@ public class TurnSystem : MonoBehaviour
             turnQueue.Sort();
             nextQueue = new List<UnitStats>();
         }
-        print(this);
         UnitStats contestant = turnQueue[0];
         if (contestant.tag == "EnemyUnit") SwitchMenus(false);
         else if (contestant.tag == "PlayerUnit") SwitchMenus(true);

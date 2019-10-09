@@ -18,6 +18,7 @@ public class UnitStats : MonoBehaviour, IComparable
     {
     }
 
+    // descending order (i.e. put the greater before the lesser -- i.e. big should be negative compared to small)
     public int CompareTo(object other)
     {
         return  ((UnitStats) other).Speed - Speed;
@@ -30,6 +31,15 @@ public class UnitStats : MonoBehaviour, IComparable
     internal void Act(TurnSystem currentBattle)
     {
         print($"{gameObject.name} up to bat.");
-        if (gameObject.tag == "EnemyUnit") currentBattle.NextTurn();
+        if (gameObject.tag == "EnemyUnit") {
+            StartCoroutine("EnemyAction", currentBattle);
+        }
     }
+
+    IEnumerator EnemyAction(TurnSystem currentBattle) 
+    {
+        yield return new WaitForSeconds(2);
+        currentBattle.NextTurn();
+    }
+
 }
