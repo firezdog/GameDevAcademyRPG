@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class UnitStats : MonoBehaviour, IComparable
 {
-    [SerializeField] int health;
-    [SerializeField] int mana;
     [SerializeField] int attack;
-    [SerializeField] int magic;
-    [SerializeField] int defense;
     [SerializeField] int speed;
 
     public int Speed { get => speed; set => speed = value; }
+    public int Attack { get => attack; }
 
     void Start() 
     {
@@ -39,6 +36,7 @@ public class UnitStats : MonoBehaviour, IComparable
     IEnumerator EnemyAction(TurnSystem currentBattle) 
     {
         yield return new WaitForSeconds(2);
+        gameObject.GetComponent<Attack>().AttackTarget();
         currentBattle.NextTurn();
     }
 
