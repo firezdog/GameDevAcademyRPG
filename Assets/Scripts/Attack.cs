@@ -10,6 +10,8 @@ public class Attack : MonoBehaviour
     UnitStats ownerStats;
     Animator animator;
 
+    bool test;
+
     void Start()
     {
         ownerStats = gameObject.GetComponent<UnitStats>();
@@ -18,10 +20,15 @@ public class Attack : MonoBehaviour
 
     public IEnumerator AttackTarget() 
     {
+        test = false;
         int attack = Random.Range(0, ownerStats.Attack);
         print(attack);
         gameObject.GetComponent<Animator>().Play(attackAnimation);
-        yield return new WaitForSeconds(3);
-        // yield return new WaitUntil(() => !animator.GetCurrentAnimatorStateInfo(0).IsName(attackAnimation));
+        yield return new WaitUntil(() => test == true);
     }
+
+    public void SetTest() {
+        test = true;
+    }
+
 }
