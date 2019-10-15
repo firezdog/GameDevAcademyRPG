@@ -31,6 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0004d7c5bff4141b0b60fc23ced4ac29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackAnimation: SnakeAttack
 --- !u!1001 &4084666444128406921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +74,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: attack
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
         type: 3}

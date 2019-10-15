@@ -6,13 +6,15 @@ using UnityEngine;
 public class UnitStats : MonoBehaviour, IComparable
 {
     [SerializeField] int attack;
-    [SerializeField] int speed;
-
-    public int Speed { get => speed; set => speed = value; }
     public int Attack { get => attack; }
+    [SerializeField] int speed;
+    public int Speed { get => speed; set => speed = value; }
+
+    Attack attacker;
 
     void Start() 
     {
+        attacker = gameObject.GetComponent<Attack>();
     }
 
     // descending order (i.e. put the greater before the lesser -- i.e. big should be negative compared to small)
@@ -25,18 +27,18 @@ public class UnitStats : MonoBehaviour, IComparable
         return gameObject.name;
     }
 
+    // use currentBattle to access the NextTurn method when done acting.
     internal void Act(TurnSystem currentBattle)
     {
         print($"{gameObject.name} up to bat.");
         if (gameObject.tag == "EnemyUnit") {
-            StartCoroutine("EnemyAction", currentBattle);
+            StartCoroutine(EnemyAction(currentBattle));
         }
     }
 
     IEnumerator EnemyAction(TurnSystem currentBattle) 
     {
-        yield return new WaitForSeconds(2);
-        gameObject.GetComponent<Attack>().AttackTarget();
+        yield return attacker.AttackTarget();
         currentBattle.NextTurn();
     }
 
