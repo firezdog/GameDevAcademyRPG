@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
     UnitStats ownerStats;
     Animator animator;
 
-    bool test;
+    public bool waitForAnimations;
 
     void Start()
     {
@@ -20,15 +20,20 @@ public class Attack : MonoBehaviour
 
     public IEnumerator AttackTarget() 
     {
-        test = false;
-        int attack = Random.Range(0, ownerStats.Attack);
-        print(attack);
+        waitForAnimations = true;
+        // might be a performance hit here
+        GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        int targetCode = Random.Range(1, playerUnits.Length - 1);
+        GameObject target = playerUnits[targetCode];
+        int damage = Random.Range(0, ownerStats.Attack);
+        print($"{gameObject.name} attacking {target.name} for {damage}");
         gameObject.GetComponent<Animator>().Play(attackAnimation);
-        yield return new WaitUntil(() => test == true);
+        yield return new WaitUntil(() => waitForAnimations == false);
+        yield return target.GetComponent<UnitStats>().BeAttacked(damage);
     }
 
-    public void SetTest() {
-        test = true;
+    public void StopAwaitingAnimation() {
+        waitForAnimations = false;
     }
 
 }

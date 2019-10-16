@@ -10,11 +10,12 @@ public class UnitStats : MonoBehaviour, IComparable
     [SerializeField] int speed;
     public int Speed { get => speed; set => speed = value; }
 
-    Attack attacker;
+
+    Attack attackComponent;
 
     void Start() 
     {
-        attacker = gameObject.GetComponent<Attack>();
+        attackComponent = gameObject.GetComponent<Attack>();
     }
 
     // descending order (i.e. put the greater before the lesser -- i.e. big should be negative compared to small)
@@ -38,8 +39,13 @@ public class UnitStats : MonoBehaviour, IComparable
 
     IEnumerator EnemyAction(TurnSystem currentBattle) 
     {
-        yield return attacker.AttackTarget();
+        yield return attackComponent.AttackTarget();
         currentBattle.NextTurn();
     }
 
+    internal IEnumerator BeAttacked(int damage)
+    {
+        print($"{gameObject.name} attacked for {damage}");
+        yield return null;
+    }
 }
