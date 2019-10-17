@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-
-    [SerializeField] string attackAnimation;
-
+    // components
     UnitStats ownerStats;
-    Animator animator;
 
+    // animations
+    [SerializeField] string attackAnimation;
+    Animator animator;
     public bool waitForAnimations;
 
     void Start()
@@ -23,11 +23,11 @@ public class Attack : MonoBehaviour
         waitForAnimations = true;
         // might be a performance hit here
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
-        int targetCode = Random.Range(1, playerUnits.Length - 1);
+        int targetCode = Random.Range(0, playerUnits.Length);
         GameObject target = playerUnits[targetCode];
         int damage = Random.Range(0, ownerStats.Attack);
         print($"{gameObject.name} attacking {target.name} for {damage}");
-        gameObject.GetComponent<Animator>().Play(attackAnimation);
+        animator.Play(attackAnimation);
         yield return new WaitUntil(() => waitForAnimations == false);
         yield return target.GetComponent<UnitStats>().BeAttacked(damage);
     }

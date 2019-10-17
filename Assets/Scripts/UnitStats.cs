@@ -5,17 +5,25 @@ using UnityEngine;
 
 public class UnitStats : MonoBehaviour, IComparable
 {
+    // stats
     [SerializeField] int attack;
     public int Attack { get => attack; }
     [SerializeField] int speed;
     public int Speed { get => speed; set => speed = value; }
 
-
+    // components
     Attack attackComponent;
+
+    // animation
+    Animator animator;
+    [SerializeField] string hitAnimation;
+    bool waitForAnimation;
+    
 
     void Start() 
     {
         attackComponent = gameObject.GetComponent<Attack>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // descending order (i.e. put the greater before the lesser -- i.e. big should be negative compared to small)
@@ -45,7 +53,13 @@ public class UnitStats : MonoBehaviour, IComparable
 
     internal IEnumerator BeAttacked(int damage)
     {
+        waitForAnimation = true;
         print($"{gameObject.name} attacked for {damage}");
-        yield return null;
+        animator.Play(hitAnimation);
+        yield return new WaitUntil(() => waitForAnimation == false);
+    }
+
+    public void StopAwaitingAnimation() {
+        waitForAnimation = false;
     }
 }

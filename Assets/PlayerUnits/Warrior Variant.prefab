@@ -117,6 +117,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 324141855068415940, guid: 7e4dff54b508f4372bc570ea269b2eef,
+        type: 3}
+      propertyPath: hitAnimation
+      value: WarriorHit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e4dff54b508f4372bc570ea269b2eef, type: 3}
 --- !u!1 &7973825168258087627 stripped
