@@ -58,7 +58,7 @@ public class UnitStats : MonoBehaviour, IComparable
         waitForAnimation = true;
         print($"{gameObject.name} attacked for {damage}");
         animator.Play(hitAnimation);
-        GameObject hitDamageDisplay = Instantiate(damageDisplay, HUD.transform, false);
+        GameObject hitDamageDisplay = Instantiate(damageDisplay, Vector3.zero, gameObject.transform.rotation, HUD.transform);
         yield return new WaitUntil(() => waitForAnimation == false);
     }
 
