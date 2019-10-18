@@ -18,12 +18,14 @@ public class UnitStats : MonoBehaviour, IComparable
     Animator animator;
     [SerializeField] string hitAnimation;
     bool waitForAnimation;
-    
+    [SerializeField] GameObject damageDisplay;
+    GameObject HUD;
 
     void Start() 
     {
         attackComponent = gameObject.GetComponent<Attack>();
         animator = gameObject.GetComponent<Animator>();
+        HUD = GameObject.FindGameObjectWithTag("BattleHUD");
     }
 
     // descending order (i.e. put the greater before the lesser -- i.e. big should be negative compared to small)
@@ -56,6 +58,7 @@ public class UnitStats : MonoBehaviour, IComparable
         waitForAnimation = true;
         print($"{gameObject.name} attacked for {damage}");
         animator.Play(hitAnimation);
+        GameObject hitDamageDisplay = Instantiate(damageDisplay, HUD.transform, false);
         yield return new WaitUntil(() => waitForAnimation == false);
     }
 

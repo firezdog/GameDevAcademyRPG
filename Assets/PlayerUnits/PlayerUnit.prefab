@@ -92,9 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de657f8397b92431285cf0c7631ad850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  mana: 0
   attack: 0
-  magic: 0
-  defense: 0
   speed: 0
+  hitAnimation: 
+  damageDisplay: {fileID: 5955497916201625304, guid: 3c6b916f78c864d059a1fc092b3ced79,
+    type: 3}
