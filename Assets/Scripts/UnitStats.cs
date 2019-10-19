@@ -6,10 +6,14 @@ using UnityEngine;
 public class UnitStats : MonoBehaviour, IComparable
 {
     // stats
+    [SerializeField] int health;
     [SerializeField] int attack;
-    public int Attack { get => attack; }
     [SerializeField] int speed;
+
+    // accessors
+    public int Attack { get => attack; }
     public int Speed { get => speed; set => speed = value; }
+    public int Health { get => health; set => health = value; }
 
     // components
     Attack attackComponent;
@@ -49,11 +53,11 @@ public class UnitStats : MonoBehaviour, IComparable
 
     IEnumerator EnemyAction(TurnSystem currentBattle) 
     {
-        yield return attackComponent.AttackTarget();
+        yield return attackComponent.AttackTarget(currentBattle);
         currentBattle.NextTurn();
     }
 
-    internal IEnumerator BeAttacked(int damage)
+    internal IEnumerator BeAttacked(int damage, TurnSystem currentBattle)
     {
         waitForAnimation = true;
         print($"{gameObject.name} attacked for {damage}");
@@ -65,6 +69,13 @@ public class UnitStats : MonoBehaviour, IComparable
             gameObject.transform.rotation, 
             HUD.transform
         );
+        health = Math.Max(health - damage, 0);
+        if (health == 0) {
+            // kill player unit
+            gameObject.tag = "DeadPlayerUnit";
+            gameObject.SetActive(false);
+            currentBattle.RemoveUnitFromBattle(this);
+        }
         myDamageDisplay.GetComponentInChildren<DamageDisplay>().SetText(damage.ToString());
     }
 

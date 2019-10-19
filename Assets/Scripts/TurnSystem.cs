@@ -49,6 +49,12 @@ public class TurnSystem : MonoBehaviour
         turnQueue.Sort();
     }
 
+    public void RemoveUnitFromBattle(UnitStats unit) 
+    {
+        turnQueue.Remove(unit);
+        nextQueue.Remove(unit);
+    }
+
     // get the next contestant to move
     public void NextTurn()
     {
