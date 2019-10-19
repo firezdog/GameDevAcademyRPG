@@ -615,11 +615,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7805356311626628244, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805356311626628244, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805356311626628244, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7805356311626628247, guid: a8157ab13b6a642f99efe3c8918e6d05,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1630277820}
+    - target: {fileID: 7805356311626628247, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805356311626628247, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 977303733
+      objectReference: {fileID: 0}
     - target: {fileID: 7805356311196393944, guid: a8157ab13b6a642f99efe3c8918e6d05,
         type: 3}
       propertyPath: m_AnchorMin.y
