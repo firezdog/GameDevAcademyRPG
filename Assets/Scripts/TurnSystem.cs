@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class TurnSystem : MonoBehaviour
 {
 
-    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, characterDisplay;
+    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, characterDisplay, loseMenu;
 
     List<UnitStats> turnQueue;
     List<UnitStats> nextQueue;
@@ -84,6 +84,15 @@ public class TurnSystem : MonoBehaviour
         }
         sb.Append("]");
         return sb.ToString();
+    }
+
+    public void Lose() 
+    {
+        foreach(Animator a in FindObjectsOfType<Animator>())
+        {
+            a.enabled = false;
+        }
+        loseMenu.SetActive(true);
     }
 
 }

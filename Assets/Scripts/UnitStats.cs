@@ -45,7 +45,6 @@ public class UnitStats : MonoBehaviour, IComparable
     // use currentBattle to access the NextTurn method when done acting.
     internal void Act(TurnSystem currentBattle)
     {
-        print($"{gameObject.name} up to bat.");
         if (gameObject.tag == "EnemyUnit") {
             StartCoroutine(EnemyAction(currentBattle));
         }
@@ -53,14 +52,19 @@ public class UnitStats : MonoBehaviour, IComparable
 
     IEnumerator EnemyAction(TurnSystem currentBattle) 
     {
-        yield return attackComponent.AttackTarget(currentBattle);
+        GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        if (playerUnits.Length == 0) {
+            yield return new WaitForSeconds(2);
+            currentBattle.Lose();
+            yield break;
+        }
+        yield return attackComponent.AttackTarget(currentBattle, playerUnits);
         currentBattle.NextTurn();
     }
 
     internal IEnumerator BeAttacked(int damage, TurnSystem currentBattle)
     {
         waitForAnimation = true;
-        print($"{gameObject.name} attacked for {damage}");
         animator.Play(hitAnimation);
         yield return new WaitUntil(() => waitForAnimation == false);
         var myDamageDisplay = Instantiate(
@@ -69,6 +73,7 @@ public class UnitStats : MonoBehaviour, IComparable
             gameObject.transform.rotation, 
             HUD.transform
         );
+        myDamageDisplay.GetComponentInChildren<DamageDisplay>().SetText(damage.ToString());
         health = Math.Max(health - damage, 0);
         if (health == 0) {
             // kill player unit
@@ -76,7 +81,6 @@ public class UnitStats : MonoBehaviour, IComparable
             gameObject.SetActive(false);
             currentBattle.RemoveUnitFromBattle(this);
         }
-        myDamageDisplay.GetComponentInChildren<DamageDisplay>().SetText(damage.ToString());
     }
 
     public void StopAwaitingAnimation() {
