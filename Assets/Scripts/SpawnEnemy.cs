@@ -26,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player") {
             triggered = true;
-            DontDestroyOnLoad(gameObject);  
+            DontDestroyOnLoad(gameObject);
             SceneManager.LoadScene("Battle");
         } 
     }

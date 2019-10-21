@@ -95,4 +95,9 @@ public class TurnSystem : MonoBehaviour
         loseMenu.SetActive(true);
     }
 
+    public void Flee()
+    {
+        SceneManager.LoadScene("Town");
+    }
+
 }

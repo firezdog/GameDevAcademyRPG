@@ -29,7 +29,6 @@ public class UnitStats : MonoBehaviour, IComparable
     {
         attackComponent = gameObject.GetComponent<Attack>();
         animator = gameObject.GetComponent<Animator>();
-        HUD = GameObject.FindGameObjectWithTag("BattleHUD");
     }
 
     // descending order (i.e. put the greater before the lesser -- i.e. big should be negative compared to small)
@@ -45,6 +44,7 @@ public class UnitStats : MonoBehaviour, IComparable
     // use currentBattle to access the NextTurn method when done acting.
     internal void Act(TurnSystem currentBattle)
     {
+        if (HUD == null) HUD = GameObject.FindGameObjectWithTag("BattleHUD");
         if (gameObject.tag == "EnemyUnit") {
             StartCoroutine(EnemyAction(currentBattle));
         }
