@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnitStats : MonoBehaviour, IComparable
 {
@@ -23,6 +24,7 @@ public class UnitStats : MonoBehaviour, IComparable
     [SerializeField] string hitAnimation;
     bool waitForAnimation;
     [SerializeField] GameObject damageDisplay;
+    // cached
     GameObject HUD;
 
     void Start() 
@@ -44,7 +46,6 @@ public class UnitStats : MonoBehaviour, IComparable
     // use currentBattle to access the NextTurn method when done acting.
     internal void Act(TurnSystem currentBattle)
     {
-        if (HUD == null) HUD = GameObject.FindGameObjectWithTag("BattleHUD");
         if (gameObject.tag == "EnemyUnit") {
             StartCoroutine(EnemyAction(currentBattle));
         }
@@ -64,6 +65,7 @@ public class UnitStats : MonoBehaviour, IComparable
 
     internal IEnumerator BeAttacked(int damage, TurnSystem currentBattle)
     {
+        if (HUD == null) HUD = GameObject.FindGameObjectWithTag("BattleHUD");
         waitForAnimation = true;
         animator.Play(hitAnimation);
         yield return new WaitUntil(() => waitForAnimation == false);
