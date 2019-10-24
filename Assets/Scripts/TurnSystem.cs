@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class TurnSystem : MonoBehaviour
 {
 
-    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, characterDisplay, loseMenu;
+    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, loseMenu;
+    [SerializeField] DisplayUnit characterDisplay;
 
     List<UnitStats> turnQueue;
     List<UnitStats> nextQueue;
@@ -25,10 +26,15 @@ public class TurnSystem : MonoBehaviour
     {
     }
 
-    void SwitchMenus(bool option) {
-        actionsMenu.SetActive(option);
-        enemyUnitsMenu.SetActive(option);
-        characterDisplay.SetActive(option);
+    void TurnOffMenus() {
+        actionsMenu.SetActive(false);
+        enemyUnitsMenu.SetActive(false);
+        characterDisplay.Deactivate();
+    }
+
+    void StartPlayerTurn(UnitStats activePlayer) {
+        characterDisplay.Activate(activePlayer);
+        actionsMenu.SetActive(true);
     }
 
     void GetAllContestants()
@@ -68,8 +74,8 @@ public class TurnSystem : MonoBehaviour
             nextQueue = new List<UnitStats>();
         }
         UnitStats contestant = turnQueue[0];
-        if (contestant.tag == "EnemyUnit") SwitchMenus(false);
-        else if (contestant.tag == "PlayerUnit") SwitchMenus(true);
+        if (contestant.tag == "EnemyUnit") TurnOffMenus();
+        else if (contestant.tag == "PlayerUnit") StartPlayerTurn(contestant);
         turnQueue.Remove(contestant);
         nextQueue.Add(contestant);
         contestant.Act(this);
