@@ -53,12 +53,12 @@ PrefabInstance:
     - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2575845652723091219, guid: f787938a46625430cb42953178a77a19,
         type: 3}
@@ -91,6 +91,12 @@ PrefabInstance:
       propertyPath: attack
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: 21300038, guid: 0d2f916d1c45a49d986a3767386a4331,
+        type: 3}
     - target: {fileID: 3889877033194890981, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: m_LocalPosition.x

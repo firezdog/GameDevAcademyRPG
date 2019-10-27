@@ -2,24 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DisplayUnit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    [SerializeField] Image unitPicture;
     internal void Activate(UnitStats activePlayer)
     {
         gameObject.SetActive(true);
-        print($"{activePlayer.name}");
+        unitPicture.sprite = activePlayer.Portrait;
     }
 
     internal void Deactivate()

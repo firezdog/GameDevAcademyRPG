@@ -8,9 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 75007683325272238}
+  - component: {fileID: 1931022894158898817}
   - component: {fileID: 8980748896247477922}
   - component: {fileID: 324141855068415940}
+  - component: {fileID: 6062926337859541662}
   m_Layer: 0
   m_Name: PlayerUnit
   m_TagString: Untagged
@@ -18,8 +19,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &75007683325272238
-Transform:
+--- !u!224 &1931022894158898817
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -32,6 +33,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &8980748896247477922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,3 +104,11 @@ MonoBehaviour:
   hitAnimation: 
   damageDisplay: {fileID: 5955497916201625304, guid: 3c6b916f78c864d059a1fc092b3ced79,
     type: 3}
+--- !u!222 &6062926337859541662
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101536623914544834}
+  m_CullTransparentMesh: 0

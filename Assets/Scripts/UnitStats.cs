@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UnitStats : MonoBehaviour, IComparable
 {
+    // ui
+    [SerializeField] Sprite portrait;
+
     // stats
     [SerializeField] int health;
     [SerializeField] int attack;
@@ -15,9 +16,10 @@ public class UnitStats : MonoBehaviour, IComparable
     public int Attack { get => attack; }
     public int Speed { get => speed; set => speed = value; }
     public int Health { get => health; set => health = value; }
+    public Sprite Portrait { get => portrait; set => portrait = value; }
 
-    // components
-    Attack attackComponent;
+  // components
+  Attack attackComponent;
 
     // animation
     Animator animator;
