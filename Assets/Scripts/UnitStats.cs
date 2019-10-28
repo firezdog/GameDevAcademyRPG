@@ -8,18 +8,20 @@ public class UnitStats : MonoBehaviour, IComparable
     [SerializeField] Sprite portrait;
 
     // stats
-    [SerializeField] int health;
+    [SerializeField] int totalHealth;
+    int health;
     [SerializeField] int attack;
     [SerializeField] int speed;
 
     // accessors
     public int Attack { get => attack; }
     public int Speed { get => speed; set => speed = value; }
+    public int TotalHealth { get => totalHealth; set => totalHealth = value; }
     public int Health { get => health; set => health = value; }
     public Sprite Portrait { get => portrait; set => portrait = value; }
 
-  // components
-  Attack attackComponent;
+    // components
+    Attack attackComponent;
 
     // animation
     Animator animator;
@@ -29,8 +31,9 @@ public class UnitStats : MonoBehaviour, IComparable
     // cached
     GameObject HUD;
 
-    void Start() 
+    void Awake() 
     {
+        health = totalHealth;
         attackComponent = gameObject.GetComponent<Attack>();
         animator = gameObject.GetComponent<Animator>();
     }
