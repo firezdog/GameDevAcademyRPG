@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class TurnSystem : MonoBehaviour
 {
 
-    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, loseMenu;
+    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, targetEnemyButton, loseMenu;
     [SerializeField] DisplayUnit characterDisplay;
 
     List<UnitStats> turnQueue;
@@ -81,7 +81,16 @@ public class TurnSystem : MonoBehaviour
         contestant.Act(this);
     }
 
-    public override string ToString() {
+    // create the enemy selection menu and associate each entry with the proper target in such a way that, when clicked on,
+    // the correct enemy is then attacked.
+    public void SelectAttack()
+    {
+        print("Attack selected.");
+        NextTurn();
+    }
+
+    public override string ToString() 
+    {
         StringBuilder sb = new StringBuilder();
         sb.Append("[");
         for (int i = 0; i < turnQueue.Count; i++) {

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class StartBattle : MonoBehaviour
 {
     // Make GO persistent and load method to activate.
+    // Note: if the object is not initially active, this code never runs and it is not activated in battle (facepalm)
     void Start()
     {
         DontDestroyOnLoad(gameObject);
