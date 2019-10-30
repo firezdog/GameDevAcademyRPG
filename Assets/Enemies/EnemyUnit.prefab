@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7183096272410643828}
   - component: {fileID: 2575845652723091219}
   - component: {fileID: 114795628420842350}
-  - component: {fileID: 114893690779080906}
   - component: {fileID: 1948663137440739875}
   m_Layer: 0
   m_Name: EnemyUnit
@@ -99,23 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de657f8397b92431285cf0c7631ad850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  portrait: {fileID: 0}
+  totalHealth: 0
   attack: 0
   speed: 0
   hitAnimation: 
   damageDisplay: {fileID: 0}
---- !u!114 &114893690779080906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5410771169566457842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61664e0634e574d8e8ea1689b2858db3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1948663137440739875
 MonoBehaviour:
   m_ObjectHideFlags: 0
