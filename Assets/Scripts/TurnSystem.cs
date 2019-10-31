@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TurnSystem : MonoBehaviour
 {
 
-    [SerializeField] GameObject actionsMenu, enemyUnitsMenu, targetEnemyButton, loseMenu;
+    [SerializeField] GameObject battleHUD, actionsMenu, enemyUnitsMenuPrefab, targetEnemyButton, loseMenu;
     [SerializeField] DisplayUnit characterDisplay;
+
+    GameObject enemyUnitsMenu = null;
 
     List<UnitStats> turnQueue;
     List<UnitStats> nextQueue;
@@ -85,8 +86,15 @@ public class TurnSystem : MonoBehaviour
     // the correct enemy is then attacked.
     public void SelectAttack()
     {
-        print("Attack selected.");
-        NextTurn();
+        Destroy(enemyUnitsMenu);
+        enemyUnitsMenu = Instantiate(enemyUnitsMenuPrefab, gameObject.transform.parent.transform, false);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyUnit");
+        foreach (GameObject enemy in enemies) 
+        {
+            GameObject newEnemyButton = Instantiate(targetEnemyButton, enemyUnitsMenu.transform, false);
+            newEnemyButton.GetComponent<Image>().sprite = enemy.GetComponent<UnitStats>().Portrait;
+        }
+        // NextTurn();
     }
 
     public override string ToString() 

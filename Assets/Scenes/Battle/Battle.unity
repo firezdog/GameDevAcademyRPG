@@ -646,5 +646,36 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7240093344982002189, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240093344982002189, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240093344982002189, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7240093344982002189, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771103112011986276, guid: a8157ab13b6a642f99efe3c8918e6d05,
+        type: 3}
+      propertyPath: battleHUD
+      value: 
+      objectReference: {fileID: 7805356309732607387}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8157ab13b6a642f99efe3c8918e6d05, type: 3}
+--- !u!1 &7805356309732607387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7805356311626628240, guid: a8157ab13b6a642f99efe3c8918e6d05,
+    type: 3}
+  m_PrefabInstance: {fileID: 7805356309732607386}
+  m_PrefabAsset: {fileID: 0}
