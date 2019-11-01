@@ -14,9 +14,10 @@ public class TurnSystem : MonoBehaviour
 
     List<UnitStats> turnQueue;
     List<UnitStats> nextQueue;
+    private UnitStats contestant;
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
     {
         GetAllContestants();
         NextTurn();
@@ -74,7 +75,7 @@ public class TurnSystem : MonoBehaviour
             turnQueue.Sort();
             nextQueue = new List<UnitStats>();
         }
-        UnitStats contestant = turnQueue[0];
+        contestant = turnQueue[0];
         if (contestant.tag == "EnemyUnit") TurnOffMenus();
         else if (contestant.tag == "PlayerUnit") StartPlayerTurn(contestant);
         turnQueue.Remove(contestant);
@@ -93,8 +94,10 @@ public class TurnSystem : MonoBehaviour
         {
             GameObject newEnemyButton = Instantiate(targetEnemyButton, enemyUnitsMenu.transform, false);
             newEnemyButton.GetComponent<Image>().sprite = enemy.GetComponent<UnitStats>().Portrait;
+            newEnemyButton.GetComponent<Button>().onClick.AddListener( 
+                delegate { contestant.gameObject.GetComponent<Attack>().AttackTarget(this, enemy); }
+            );
         }
-        // NextTurn();
     }
 
     public override string ToString() 

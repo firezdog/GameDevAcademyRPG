@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -28,6 +27,11 @@ public class Attack : MonoBehaviour
         animator.Play(attackAnimation);
         yield return new WaitUntil(() => waitForAnimations == false);
         yield return target.GetComponent<UnitStats>().BeAttacked(damage, currentBattle);
+    }
+
+    public void AttackTarget(TurnSystem currentBattle, GameObject target)
+    {
+        print ($"Attacking {target}");
     }
 
     public void StopAwaitingAnimation() {
