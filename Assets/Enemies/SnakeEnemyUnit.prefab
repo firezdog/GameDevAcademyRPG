@@ -97,6 +97,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300038, guid: 0d2f916d1c45a49d986a3767386a4331,
         type: 3}
+    - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: damageDisplay
+      value: 
+      objectReference: {fileID: 5955497916201625304, guid: 3c6b916f78c864d059a1fc092b3ced79,
+        type: 3}
+    - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: totalHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: hitAnimation
+      value: SnakeHit
+      objectReference: {fileID: 0}
     - target: {fileID: 3889877033194890981, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: m_LocalPosition.x

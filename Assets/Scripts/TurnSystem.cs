@@ -3,6 +3,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class TurnSystem : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class TurnSystem : MonoBehaviour
     void StartPlayerTurn(UnitStats activePlayer) {
         characterDisplay.Activate(activePlayer);
         actionsMenu.SetActive(true);
+        Destroy(enemyUnitsMenu);
     }
 
     void GetAllContestants()
@@ -90,12 +92,13 @@ public class TurnSystem : MonoBehaviour
         Destroy(enemyUnitsMenu);
         enemyUnitsMenu = Instantiate(enemyUnitsMenuPrefab, gameObject.transform.parent.transform, false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyUnit");
+        Attack contestantAttack = contestant.gameObject.GetComponent<Attack>();
         foreach (GameObject enemy in enemies) 
         {
             GameObject newEnemyButton = Instantiate(targetEnemyButton, enemyUnitsMenu.transform, false);
             newEnemyButton.GetComponent<Image>().sprite = enemy.GetComponent<UnitStats>().Portrait;
-            newEnemyButton.GetComponent<Button>().onClick.AddListener( 
-                delegate { contestant.gameObject.GetComponent<Attack>().AttackTarget(this, enemy); }
+            newEnemyButton.GetComponent<Button>().onClick.AddListener(
+                delegate { StartCoroutine(contestantAttack.AttackTarget(this, enemy)); }
             );
         }
     }

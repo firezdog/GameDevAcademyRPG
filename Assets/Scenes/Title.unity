@@ -1059,5 +1059,15 @@ PrefabInstance:
       propertyPath: totalHealth
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 153822878972456652, guid: d18cdaaf6ae4e476fb3fafcd9745e6c1,
+        type: 3}
+      propertyPath: attackAnimation
+      value: WizardAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832717000024234484, guid: d18cdaaf6ae4e476fb3fafcd9745e6c1,
+        type: 3}
+      propertyPath: attackAnimation
+      value: WarriorAttack
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d18cdaaf6ae4e476fb3fafcd9745e6c1, type: 3}

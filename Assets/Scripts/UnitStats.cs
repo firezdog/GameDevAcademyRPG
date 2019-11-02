@@ -65,7 +65,6 @@ public class UnitStats : MonoBehaviour, IComparable
             yield break;
         }
         yield return attackComponent.AttackTarget(currentBattle, playerUnits);
-        currentBattle.NextTurn();
     }
 
     internal IEnumerator BeAttacked(int damage, TurnSystem currentBattle)

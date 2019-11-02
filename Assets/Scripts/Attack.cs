@@ -19,19 +19,19 @@ public class Attack : MonoBehaviour
 
     public IEnumerator AttackTarget(TurnSystem currentBattle, GameObject[] playerUnits) 
     {
-        waitForAnimations = true;
-        // might be a performance hit here
         int targetCode = Random.Range(0, playerUnits.Length);
         GameObject target = playerUnits[targetCode];
+        yield return AttackTarget(currentBattle, target);
+    }
+
+    public IEnumerator AttackTarget(TurnSystem currentBattle, GameObject target)
+    {
+        waitForAnimations = true;
         int damage = Random.Range(0, ownerStats.Attack);
         animator.Play(attackAnimation);
         yield return new WaitUntil(() => waitForAnimations == false);
         yield return target.GetComponent<UnitStats>().BeAttacked(damage, currentBattle);
-    }
-
-    public void AttackTarget(TurnSystem currentBattle, GameObject target)
-    {
-        print ($"Attacking {target}");
+        currentBattle.NextTurn();
     }
 
     public void StopAwaitingAnimation() {
