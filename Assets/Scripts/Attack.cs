@@ -27,7 +27,7 @@ public class Attack : MonoBehaviour
     public IEnumerator AttackTarget(TurnSystem currentBattle, GameObject target)
     {
         waitForAnimations = true;
-        int damage = Random.Range(0, ownerStats.Attack);
+        int damage = Random.Range(1, ownerStats.Attack);
         animator.Play(attackAnimation);
         yield return new WaitUntil(() => waitForAnimations == false);
         yield return target.GetComponent<UnitStats>().BeAttacked(damage, currentBattle);

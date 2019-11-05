@@ -73,13 +73,17 @@ public class UnitStats : MonoBehaviour, IComparable
         waitForAnimation = true;
         animator.Play(hitAnimation);
         yield return new WaitUntil(() => waitForAnimation == false);
+        waitForAnimation = true;
         var myDamageDisplay = Instantiate(
             damageDisplay, 
             gameObject.transform.position, 
             gameObject.transform.rotation, 
             HUD.transform
         );
-        myDamageDisplay.GetComponentInChildren<DamageDisplay>().SetText(damage.ToString());
+        DamageDisplay displayScript = myDamageDisplay.GetComponentInChildren<DamageDisplay>();
+        displayScript.MyUnit = this;
+        displayScript.SetText(damage.ToString());
+        yield return new WaitUntil(() => waitForAnimation == false);
         health = Math.Max(health - damage, 0);
         if (health == 0) {
             // kill player unit

@@ -50,16 +50,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2575845652723091219, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: m_Sprite
@@ -89,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: attack
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
         type: 3}
@@ -106,12 +96,22 @@ PrefabInstance:
     - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: totalHealth
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114795628420842350, guid: f787938a46625430cb42953178a77a19,
         type: 3}
       propertyPath: hitAnimation
       value: SnakeHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183096272410643828, guid: f787938a46625430cb42953178a77a19,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3889877033194890981, guid: f787938a46625430cb42953178a77a19,
         type: 3}
