@@ -8,7 +8,7 @@ using System;
 public class TurnSystem : MonoBehaviour
 {
 
-    [SerializeField] GameObject battleHUD, actionsMenu, enemyUnitsMenuPrefab, targetEnemyButton, loseMenu;
+    [SerializeField] GameObject battleHUD, actionsMenu, enemyUnitsMenuPrefab, targetEnemyButton, loseMenu, victoryMenu;
     [SerializeField] DisplayUnit characterDisplay;
 
     GameObject enemyUnitsMenu = null;
@@ -77,6 +77,16 @@ public class TurnSystem : MonoBehaviour
             turnQueue.Sort();
             nextQueue = new List<UnitStats>();
         }
+        GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+        GameObject[] enemyUnits = GameObject.FindGameObjectsWithTag("EnemyUnit");
+        if (playerUnits.Length == 0) {
+            Lose();
+            return;
+        }
+        if (enemyUnits.Length == 0) {
+            Win();
+            return;
+        }
         contestant = turnQueue[0];
         if (contestant.tag == "EnemyUnit") TurnOffMenus();
         else if (contestant.tag == "PlayerUnit") StartPlayerTurn(contestant);
@@ -122,6 +132,15 @@ public class TurnSystem : MonoBehaviour
             a.enabled = false;
         }
         loseMenu.SetActive(true);
+    }
+
+    public void Win()
+    {
+        foreach(Animator a in FindObjectsOfType<Animator>())
+        {
+            a.enabled = false;
+        }
+        victoryMenu.SetActive(true);
     }
 
     public void Flee()

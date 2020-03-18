@@ -59,11 +59,6 @@ public class UnitStats : MonoBehaviour, IComparable
     IEnumerator EnemyAction(TurnSystem currentBattle) 
     {
         GameObject[] playerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
-        if (playerUnits.Length == 0) {
-            yield return new WaitForSeconds(2);
-            currentBattle.Lose();
-            yield break;
-        }
         yield return attackComponent.AttackTarget(currentBattle, playerUnits);
     }
 
